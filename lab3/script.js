@@ -21,19 +21,18 @@ function addListItem(itemText) {
     const li = document.createElement("li");
 
     li.innerHTML = `
-        <input type="checkbox" class="task-checkbox">
-        <span class="task-text">${itemText}</span>
-        <button type="button" class="delete-btn" aria-label="Delete">
-            <img src="images/logo.png" alt="">
-        </button>
-    `;
+  <input type="checkbox" class="task-checkbox">
+  <span class="task-text">${itemText}</span>
+  <button type="button" class="edit-btn">Edit</button>
+  <button type="button" class="delete-btn" aria-label="Delete">
+    <img src="images/logo.png" alt="">
+  </button>`;
 
     taskList.appendChild(li);
 }
 
 
 
-// ONE listener for all
 taskList.addEventListener("change", function (e) {
     if (e.target.classList.contains("task-checkbox")) {
         const li = e.target.closest("li");
@@ -42,8 +41,26 @@ taskList.addEventListener("change", function (e) {
 });
 
 taskList.addEventListener("click", function (e) {
-    if (e.target.closest(".delete-btn")) {
-        const li = e.target.closest("li");
-        li.remove();
-    }
+  const li = e.target.closest("li");
+  if (!li) return;
+
+  if (e.target.closest(".delete-btn")) {
+    li.remove();
+    return;
+  }
+
+  if (e.target.closest(".edit-btn")) {
+    const textSpan = li.querySelector(".task-text");
+    const oldText = textSpan.textContent;
+
+    const newText = prompt("Edit task:", oldText);
+    if (newText === null) return;
+
+    const trimmed = newText.trim();
+    if (!trimmed) return;
+
+    textSpan.textContent = trimmed;
+  }
 });
+
+
