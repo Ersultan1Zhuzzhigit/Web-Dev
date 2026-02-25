@@ -1,0 +1,28 @@
+<section class="page-header">
+  <div class="header-row">
+    <div>
+      <h2>Product Catalog</h2>
+      <p>
+        10+ product cards with Kaspi.kz links, gallery, and sharing functionality.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+@if (lastShareMessage) {
+  <div class="share-info">
+    {{ lastShareMessage }}
+  </div>
+}
+
+<section class="grid">
+  @for (product of products; track product.id) {
+    <app-product-card
+      [product]="product"
+      (shareClicked)="onShare($event)"
+    />
+  } @empty {
+    <p>No products found.</p>
+  }
+</section>

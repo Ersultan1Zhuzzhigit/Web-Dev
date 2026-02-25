@@ -1,0 +1,27 @@
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">Online Store (Angular)</div>
+
+    <nav class="nav">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </a>
+
+      <a routerLink="/products" routerLinkActive="active">
+        Products
+      </a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <router-outlet />
+  </main>
+
+  <footer class="footer">
+    <small>Lab 4 • Angular • Online Store Demo</small>
+  </footer>
+</div>

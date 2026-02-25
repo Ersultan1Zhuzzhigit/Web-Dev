@@ -1,0 +1,46 @@
+.hero {
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 4vw, 36px);
+  color: #0f172a;
+}
+
+p {
+  margin: 0 0 16px;
+  color: #475569;
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+.cta {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background: #2563eb;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.cta:hover {
+  background: #1d4ed8;
+}

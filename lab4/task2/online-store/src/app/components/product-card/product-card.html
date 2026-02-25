@@ -1,0 +1,69 @@
+<article class="card">
+  <div class="gallery">
+    <img
+      class="main-image"
+      [src]="currentImage()"
+      [alt]="product().name"
+      loading="lazy"
+    />
+
+    @if (product().images.length > 1) {
+      <button class="nav prev" type="button" (click)="prevImage()" aria-label="Previous image">
+        ‹
+      </button>
+
+      <button class="nav next" type="button" (click)="nextImage()" aria-label="Next image">
+        ›
+      </button>
+
+      <div class="thumbs">
+        @for (img of product().images; track img; let i = $index) {
+          <button
+            type="button"
+            class="thumb"
+            [class.active]="img === currentImage()"
+            (click)="selectImage(i)"
+            [attr.aria-label]="'Image ' + (i + 1)"
+          >
+            <img [src]="img" [alt]="product().name + ' thumbnail ' + (i + 1)" />
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="content">
+    <h3 class="title">{{ product().name }}</h3>
+
+    <p class="description">
+      {{ product().description }}
+    </p>
+
+    <div class="meta-row">
+      <span class="price">{{ formatPrice(product().price) }} ₸</span>
+
+      <span class="rating" [title]="'Rating: ' + product().rating">
+        {{ starText(product().rating) }} {{ product().rating }}
+      </span>
+    </div>
+
+    <div class="actions">
+      <a
+        class="btn primary"
+        [href]="product().link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Kaspi
+      </a>
+
+      <button class="btn" type="button" (click)="requestShare('whatsapp')">
+        Share WhatsApp
+      </button>
+
+      <button class="btn" type="button" (click)="requestShare('telegram')">
+        Share Telegram
+      </button>
+    </div>
+  </div>
+</article>
